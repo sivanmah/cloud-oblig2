@@ -1,6 +1,6 @@
 # cloud-oblig2
 
-## temperature measurement of Fridges in a Supermarket
+## temperature measurement of Freezers in a Supermarket
 
 When I used to work at a supermarket, every few hours we had to take the temperature of the freezer to check if it had the right temperature. If temperature was lower than it should be it could lead to the meat, ice-creams and other freezed goods go bad. 
 
