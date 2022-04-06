@@ -9,25 +9,13 @@ const sensorSchema = new mongoose.Schema({
         type: Date,
         required: true,
     },
-    {
-        unit: {
-            type: String,
-            required: true,
-        },
-        value: {
-            type: Number,
-            required: true,
-        }
+    unit: {
+        type: String,
+        required: true,
     },
-    {
-        unit: {
-            type: String,
-            required: true,
-        },
-        value: {
-            type: Number,
-            required: true,
-        }
+    value: {
+        type: Number,
+        required: true,
     }
 }
 )
