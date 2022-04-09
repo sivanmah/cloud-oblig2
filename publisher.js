@@ -1,11 +1,11 @@
-//mqtt subscriber
+//mqtt publisher
 const mqtt = require('mqtt')
 
 const host = 'localhost'
 const port = '1883'
 
 //client ID that we are assigning:
-const clientId = "Navid"
+const clientId = "Sivan"
 //`mqtt_${Math.random().toString(16).slice(3)}`
 
 //Connecting to our broker
@@ -25,13 +25,13 @@ const client = mqtt.connect(connectUrl, {
 
 topic = "freezer-sensor"
 
-//getting the message from the publisher
-client.on('message', (topic, message) => {
-    message = message.toString()
-    console.log(message)
-})
+//Freezer temperature should be somewhere between -15 to -20 celsious. Lower than that and you have a problem. Your food might go bad.
+message = "Hello my Subscribers"
 
-//Creating the connection by subscribing to the specific topic
+//after the connection to the broker is created, the publisher is sending a message every 1min
 client.on('connect', () => {
-    client.subscribe(topic)
+    setInterval(() => {
+        client.publish(topic, message)
+        console.log("Message from the publisher: ", message)
+    }, 1000)
 })
