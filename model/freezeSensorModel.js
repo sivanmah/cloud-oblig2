@@ -20,4 +20,4 @@ const sensorSchema = new mongoose.Schema({
 }
 )
 
-module.exports = mongoose.model('FreezerSensor', sensorSchema);
+module.exports = mongoose.model('sensorData', sensorSchema);
