@@ -9,15 +9,15 @@ const sensorSchema = new mongoose.Schema({
         type: Date,
         required: true,
     },
-    unit: {
+    u: {
         type: String,
         required: true,
     },
-    value: {
+    v: {
         type: Number,
         required: true,
     }
 }
 )
 
-module.exports = mongoose.model('Freezer-sensor', sensorSchema);
+module.exports = mongoose.model('FreezerSensor', sensorSchema);

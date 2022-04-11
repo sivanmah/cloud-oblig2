@@ -25,13 +25,39 @@ const client = mqtt.connect(connectUrl, {
 
 topic = "freezer-sensor"
 
-//Freezer temperature should be somewhere between -15 to -20 celsious. Lower than that and you have a problem. Your food might go bad.
-message = "Hello my Subscribers"
 
-//after the connection to the broker is created, the publisher is sending a message every 1min
+//Getting a random integer between two values
+function temperatureValue(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.ceil(Math.random() * (max - min + 1) + min)
+}
+//source: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+
+
+//Freezer temperature should be somewhere between -15 to -20 celsious. Lower than that and you have a problem - your food might go bad. 
+//Our max temperature here is 0
+//Our min temperature here is -20
+const garbageData = [
+    {
+        "bn": "Temperature Sensor",
+        "bt": new Date().toString(),
+        "u": "cel",
+        "v": temperatureValue(-20, 0),
+    }
+]
+
+// JSON.stringify() method converts a JavaScript object or value to a JSON string
+const garbageDataToString = JSON.stringify(garbageData)
+//Source: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify
+
+
+//after the connection to the broker is created, the publisher is sending a message every 5sec
 client.on('connect', () => {
     setInterval(() => {
-        client.publish(topic, message)
-        console.log("Message from the publisher: ", message)
-    }, 1000)
+
+        client.publish(topic, garbageDataToString)
+        console.log("Message from the publisher: ", garbageDataToString)
+    }, 5000)
+    //publish every 60000 (1min.) instead of every 5000. We would like to see the random number every 1min.
 })

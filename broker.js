@@ -1,3 +1,5 @@
+//Our broker using aedes
+
 //Implementing aedes library:
 const aedes = require('aedes')()
 //A server to run on where we are using the net package:
@@ -6,7 +8,12 @@ const port = 1883
 
 //Connection to mongodb
 const mongoose = require('mongoose')
-//const url = mongodb+srv://navidiish:<password>@assignment2.2nv9t.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+const FreezerSensorModel = require("./model/freezeSensorModel");
+const url = `mongodb+srv://navidiish:navidiish@assignment2.2nv9t.mongodb.net/assignment2?retryWrites=true&w=majority`
+mongoose.connect(url)
+.then(() => console.log('connection to mongoDB established'))
+.catch((err) => console.log(err))
+//------------
 
 server.listen(port, function() {
     console.log("aedes is listening on port:" , port)
@@ -26,11 +33,14 @@ aedes.on('client', function (client) {
 
 
 
-/*  
+
 //When a client disconnects
 aedes.on('clientDisconnect', function (client) {
     console.log('Client Disconnected: \x1b[31m' + (client ? client.id : client) + '\x1b[0m', 'to broker', aedes.id)
  })
+
+
+ /*  
 
 //When a topic is subscribed to:
 aedes.on('subscribe', function (subscriptions, client) {
@@ -39,7 +49,9 @@ aedes.on('subscribe', function (subscriptions, client) {
     'from broker', aedes.id)
 })
 
+*/
 
+/* 
 //When a topic is unsubscribed from:
 aedes.on('unsubscribe', function (subscriptions, client) {
     console.log('MQTT client \x1b[32m' + (client ? client.id : client) +
@@ -47,8 +59,12 @@ aedes.on('unsubscribe', function (subscriptions, client) {
     aedes.id)
 })
 
-//Then when a message is published to a topic:
-aedes.on('publish', async function (packet, client) {
-    console.log('Client \x1b[31m' + (client ? client.id : 'BROKER_' + aedes.id) + '\x1b[0m has published', packet.payload.toString(), 'on', packet.topic, 'to broker', aedes.id)
-})
  */
+
+
+//Then when a message is published to a topic, our broker is stating these:
+aedes.on('publish', async function (packet, client) {
+    
+    
+    //console.log('Client \x1b[31m' + (client ? client.id : 'BROKER_' + aedes.id) + '\x1b[0m has published', packet.payload.toString(), 'on', packet.topic, 'to broker', aedes.id)
+})
