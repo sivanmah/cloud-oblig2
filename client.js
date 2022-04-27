@@ -29,9 +29,14 @@ topic = "freezer-sensor"
 client.on('message', (topic, message) => {
     message = message.toString()
     console.log(message)
+    //client.end()
 })
 
 //Creating the connection by subscribing to the specific topic
 client.on('connect', () => {
     client.subscribe(topic)
+})
+
+client.on('error', (error) => {
+    console.log('Connection failed:', error)
 })

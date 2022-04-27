@@ -6,27 +6,29 @@ const aedes = require('aedes')()
 const server = require('net').createServer(aedes.handle)
 const port = 1883
 
-//importing garbagedata
-const { garbageDataToString } = './publisher.js'
-
-//Connection to mongodb
-const mongoose = require('mongoose')
-const FreezerSensorModel = require("./model/freezeSensorModel");
-const url = `mongodb+srv://navidiish:navidiish@assignment2.2nv9t.mongodb.net/assignment2?retryWrites=true&w=majority`
-mongoose.connect(url)
-.then(() => console.log('connection to mongoDB established'))
-.catch((err) => console.log(err))
-//------------
 
 server.listen(port, function() {
     console.log("aedes is listening on port:" , port)
-    //aedes.publish({ topic: "aedes/hello", payload: "I am a broker" + aedes.id})
+    aedes.publish({ topic: "freezer-sensor"})
 })
 
-/* aedes.on("ready", () => {
+aedes.on("ready", () => {
     console.log("ready to receive.")
 })
- */
+
+
+//Connection to mongodb
+const mongoose = require('mongoose')
+const url = `mongodb+srv://navidiish:navidiish@assignment2.2nv9t.mongodb.net/assignment2?retryWrites=true&w=majority`
+const FreezerSensorModel = require("./model/freezeSensorModel");
+mongoose.connect(url, { 
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+})
+.then(() => console.log('connection to mongoDB established'))
+.catch((err) => console.log(err));
+//------------
+ 
 
 
 //when a client connects to our broker
@@ -43,7 +45,7 @@ aedes.on('clientDisconnect', function (client) {
  })
 
 
- /*  
+ 
 
 //When a topic is subscribed to:
 aedes.on('subscribe', function (subscriptions, client) {
@@ -52,7 +54,6 @@ aedes.on('subscribe', function (subscriptions, client) {
     'from broker', aedes.id)
 })
 
-*/
 
 /* 
 //When a topic is unsubscribed from:
@@ -67,20 +68,13 @@ aedes.on('unsubscribe', function (subscriptions, client) {
 
 //Then when a message is published to a topic, our broker is stating these:
 aedes.on('publish', async function (packet) {
-    try{
-        var data = packet.payload;
-        console.log(data)
-        var jsonData = JSON.parse(data)
-        const { bn, bt, u, v } = jsonData
-        const freezerSensorData = await FreezerSensorModel.create({
-            bn: bn,
-            bt: bt,
-            u: u,
-            v: v
-        })
-        console.log(freezerSensorData)
-    }catch(error){
-        console.log(error)
-    }
-    //console.log('Client \x1b[31m' + (client ? client.id : 'BROKER_' + aedes.id) + '\x1b[0m has published', packet.payload.toString(), 'on', packet.topic, 'to broker', aedes.id)
-})
+
+
+    console.log('Client \x1b[31m' + (client ? client.id : 'BROKER_' + aedes.id) + '\x1b[0m has published', packet.payload.toString(), 'on', packet.topic, 'to broker', aedes.id)
+}) 
+
+
+
+//Displaying monogodb data:
+//FreezerSensorModel.find({}, function(err, data) { console.log(data.length); });
+

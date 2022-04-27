@@ -1,23 +1,18 @@
 const mongoose = require('mongoose')
 
 const sensorSchema = new mongoose.Schema({
-    bn: {
-        type: String,
-        required: true,
-    },
-    bt: {
-        type: Date,
-        required: true,
-    },
-    u: {
-        type: String,
-        required: true,
-    },
-    v: {
-        type: Number,
-        required: true,
-    }
-}
-)
+        sensorName: {
+            type: String,
+        },
+        time: {
+            type: Date,
+        },
+        unit: {
+            type: String,
+        },
+        value: {
+            type: Number,
+        }
+})
 
 module.exports = mongoose.model('sensorData', sensorSchema);
