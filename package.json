@@ -1,0 +1,26 @@
+{
+  "name": "cloud-oblig2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sivanmah/cloud-oblig2.git"
+  },
+  "author": "sivan, navid",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sivanmah/cloud-oblig2/issues"
+  },
+  "homepage": "https://github.com/sivanmah/cloud-oblig2#readme",
+  "dependencies": {
+    "aedes": "^0.46.3",
+    "dotenv": "^16.0.0",
+    "http": "^0.0.1-security",
+    "mqtt": "^4.3.7",
+    "websocket-stream": "^5.5.2"
+  }
+}
