@@ -7,12 +7,11 @@ const sensorSchema = new mongoose.Schema({
         time: {
             type: Date,
         },
-        unit: {
-            type: String,
-        },
-        value: {
-            type: Number,
-        }
+        measurement: 
+            [{
+            unit: String,
+            value: Number
+        }]
 })
 
 module.exports = mongoose.model('sensorData', sensorSchema);
