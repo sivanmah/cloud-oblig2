@@ -1,6 +1,6 @@
 const mqtt = require('mqtt')
 
-const host = 'HEROKU-APP-ID-HERE.herokuapp.com'
+const host = 'assignment2-idg2001-group2.herokuapp.com'
 const clientId = `mqtt_${Math.random().toString(16).slice(3)}`
 
 const connectUrl = `ws://${host}`
