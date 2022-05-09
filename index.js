@@ -18,5 +18,5 @@ app.listen(PORT, () => {
 app.use('/api', require('./routes.js'));
 
 //Serving frontend
-app.use(express.static(path.join(__dirname, './frontend/build', 'build')));
+app.use(express.static(path.join(__dirname, './frontend/build')));
 app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, './', 'frontend', 'build', 'index.html')));
