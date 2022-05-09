@@ -13,8 +13,6 @@ httpServer.listen(port, function () {
 
 const mongoose = require('mongoose')
 //connect to mongodb - source: https://www.youtube.com/watch?v=-8NgIdT_OBc&ab_channel=LintangWisesa
-/* var mongo = require('mongodb')
-var mongC = mongo.MongoClient */
 var mongoURL = "mongodb+srv://navidiish:navidiish@assignment2.2nv9t.mongodb.net/assignment2?retryWrites=true&w=majority"
 
 
@@ -49,7 +47,6 @@ aedes.on('publish', async function (packet, client) {
     var message = packet.payload.toString()
     //transforming to object before sending to db
     var parseMessage = JSON.parse(message)
-/*     if(message.slice(0,1) != "{" && message.slice(0,4) != "mqtt" ){ */
         mongoose.connect(mongoURL, { useNewUrlParser: true, useUnifiedTopology: true })
             const sensor = new SensorModel({
                 sensorName: parseMessage.sensorName, 
@@ -60,21 +57,6 @@ aedes.on('publish', async function (packet, client) {
                 time: parseMessage.time,
         })
         await sensor.save()
-/*     } ()=>{ */
         console.log("data saved to mongodb")
-/*         client.close() */
-/*     } */
-/*             myCol.insertMany({
-                message: {
-                    name: String,
-                    unit: String,
-                    value: Number,
-                    time: Date,
-                }
-            }, ()=>{
-                console.log("data saved to mongodb, Navidiish")
-                client.close()
-            }) */
-
 })
 
