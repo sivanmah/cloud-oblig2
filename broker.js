@@ -1,18 +1,14 @@
-/* const aedes = require('aedes')()
-const httpServer = require("http").createServer();
-const ws = require("websocket-stream");
-const port = process.env.PORT || 80;
-
-ws.createServer({ server: httpServer }, aedes.handle); */
-
 const aedes = require('aedes')()
-const server = require('net').createServer(aedes.handle)
-const port = 1883
+const httpServer = require("http").createServer()
+const ws = require("websocket-stream")
+const port = process.env.PORT || 80
+ws.createServer({ server: httpServer }, aedes.handle)
 const SensorModel = require('./model/sensorModel')
 
-/* httpServer */server.listen(port, function () {
+
+httpServer.listen(port, function () {
     console.log('Aedes listening on port:', port)
-    aedes.publish({ topic: 'test', payload: "I'm broker " + aedes.id })
+    aedes.publish({ topic: 'office', payload: "I'm broker " + aedes.id })
    })
 
 const mongoose = require('mongoose')
