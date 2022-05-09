@@ -3,8 +3,10 @@ const host = 'localhost'
 const port = '1883'
 const clientId = /* `mqtt_${Math.random().toString(16).slice(3)}` */ "Navid"
 
-//source: mongodb connection - exercise 7 (w10)
+/* //source: mongodb connection - exercise 7 (w10)
 const { MongoClient } = require("mongodb");
+const host = 'assignment2-idg2001-group2.herokuapp.com'
+const clientId = `mqtt_${Math.random().toString(16).slice(3)}` */
 
 //Source: Exercise 7, week 10 -  Data and open data
 /* async function readDB() {
