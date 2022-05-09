@@ -41,9 +41,9 @@ client.on('connect', () => {
     let message = {
             "sensorName": "sensor1",
             "sensorUnit1": "Cel",
-            "tempValue": getRandomInt(19, 26), //random number between -10 and 40
+            "tempValue": getRandomInt(19, 26), //random number between 19 and 26
             "sensorUnit2": "Percent",
-            "humidityValue": getRandomInt(20, 60), //random percentage between 0 and 100
+            "humidityValue": getRandomInt(20, 60), //random percentage between 20 and 60
             "time": Date.now(),
     }
     message = JSON.stringify(message)
@@ -57,9 +57,9 @@ client.on('connect', () => {
         let message = {
                 "sensorName": "sensor2",
                 "sensorUnit1": "Cel",
-                "tempValue": getRandomInt(19, 26), //random number between -10 and 40
+                "tempValue": getRandomInt(19, 26), //random number between 19 and 26
                 "sensorUnit2": "Percent",
-                "humidityValue": getRandomInt(20, 60), //random percentage between 0 and 100
+                "humidityValue": getRandomInt(20, 60), //random percentage between 20 and 60
                 "time": Date.now(),
         }
         message = JSON.stringify(message)

@@ -1,7 +1,8 @@
 //source: mongodb connection - exercise 7 (w10)
-const { MongoClient } = require("mongodb");
-
+const { MongoClient } = require("mongodb")
 const cbor = require('cbor-x')
+var xmlify = require('xmlify')
+const fs = require('fs')
 
 //Source: Exercise 7, week 10 -  Data and open data
 async function readDB() {
@@ -57,24 +58,34 @@ async function readDB() {
                 senMl_json.push(empty_obj)
             }
         } 
-        //speed of encoding data into senml json starts
-        console.log(Date.now())
-        console.log(senMl_json)
-        //speed of encoding data into senml json end
-        console.log(Date.now())
-
 
         //speed of encoding data into cbor starts
         //console.log(Date.now())
         //cbor senml
-        let serialisedBuffer = cbor.encode(senMl_json)
-        //console.log(serialisedBuffer) //gives us a buffer of binary data
+        //let serialisedBuffer = cbor.encode(senMl_json)
+        //fs.writeFileSync('cbor_senml.cbor', serialisedBuffer)
         //speed of encoding data into cbor end
         //console.log(Date.now())
+        //console.log(serialisedBuffer.length)
+
+        //Encoding json data to xml file - had to npm install "xmlify".
+/*      console.log(Date.now())
+        var xml = xmlify(senMl_json)
+        fs.writeFileSync('sensor1.xml', xml)
+        console.log(Date.now())
+        console.log(xml.length) */
+
+
+        //Encoding to json file
+/*      let jsonData = JSON.stringify(senMl_json)
+        console.log(Date.now())
+        fs.writeFileSync("jsonData.json", jsonData)
+        console.log(Date.now())
+        console.log(jsonData.length) */ //calculates the size of the jsonData variable.
 
         });
     } catch (err) {
-        console.log(err.stack);
+        console.log(err.stack)
     }
 }
 readDB();
