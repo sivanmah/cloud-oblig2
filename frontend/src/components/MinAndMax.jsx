@@ -16,7 +16,7 @@ export default class MinAndMax extends React.Component {
     }
 
     async getData() {
-        const response = await fetch("http://localhost:5000/api/minandmax");
+        const response = await fetch("https://assignment2-idg2001-group2.herokuapp.com/api/minandmax");
         const data = await response.json();
         this.setState({
             minTemp: data.minTemp[0].tempValue,

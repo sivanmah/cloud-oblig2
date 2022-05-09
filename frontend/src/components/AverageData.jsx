@@ -20,7 +20,7 @@ export default class AverageData extends React.Component {
     }
 
     async getData() {
-        const response = await fetch("http://localhost:5000/api/all");
+        const response = await fetch("https://assignment2-idg2001-group2.herokuapp.com/api/all");
         const data = await response.json();
         this.setState({data: data});
         this.setTempData();
