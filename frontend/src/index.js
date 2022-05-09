@@ -4,11 +4,17 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Dashboard from './components/Dashboard';
+import AverageData from './components/AverageData';
+import MinAndMax from './components/MinAndMax';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <div className='container'>
     <Dashboard />
+    <AverageData />
+    <MinAndMax />
+    </div>
   </React.StrictMode>
 );
 
