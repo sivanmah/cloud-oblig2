@@ -18,8 +18,11 @@
   "homepage": "https://github.com/sivanmah/cloud-oblig2#readme",
   "dependencies": {
     "aedes": "^0.46.3",
+    "cbor-x": "^1.2.1",
     "dotenv": "^16.0.0",
     "http": "^0.0.1-security",
+    "mongodb": "^4.5.0",
+    "mongoose": "^6.3.2",
     "mqtt": "^4.3.7",
     "websocket-stream": "^5.5.2"
   }
