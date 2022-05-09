@@ -15,7 +15,7 @@ export default class Dasboard extends React.Component {
     }
 
     async getData() {
-        const response = await fetch("http://localhost:5000/api/latest");
+        const response = await fetch("https://assignment2-idg2001-group2.herokuapp.com/api/latest");
         const data = await response.json();
         this.setState({
             tempValue: data[0].tempValue,
