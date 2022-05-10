@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "server": "nodemon server.js",
     "heroku-postbuild": "npm install --prefix frontend && npm run build --prefix frontend"
   },
   "repository": {
@@ -28,6 +29,7 @@
     "mongodb": "^4.5.0",
     "mongoose": "^6.3.2",
     "mqtt": "^4.3.7",
+    "nodemon": "^2.0.16",
     "websocket-stream": "^5.5.2",
     "xmlify": "^1.1.0"
   }
